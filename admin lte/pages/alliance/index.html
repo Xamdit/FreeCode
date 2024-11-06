@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../authen.js"></script>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>จัดการสมาชิก | AppzStory</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link rel="stylesheet" href="../../assets/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- Datatables -->
+    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/toastr.min.css">
+    <link href="../../assets/DateTimePicker/datetimepicker-master.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: inherit !important;
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="loader"></div>
+    <div class="wrapper">
+        <div w3-include-html="../includes/sidebar.html"></div>
+        <div class="content-wrapper pt-3">
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12" style="text-align:center;padding: 10px;">
+                            <h1>ระบบพันธมิตร</h1>
+                        </div>
+
+                        <div class="col-12">
+                            <button class="btn btn-info btn-lg waves-effect waves-light" id="balance_pro2" onclick="add_alliance_modal()"><i class="fa-solid fa-plus"></i> เพิ่มพันธมิตร</button>
+                            <br>
+                            <br>
+                            <div class="card shadow">
+                                <div class="card-header border-0 pt-4">
+                                    <h4>
+                                        <i class="fas fa-users"></i> จัดการพันธมิตร
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <table id="logs" class="table table-hover" width="100%">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div id="detail_alliance" style="display:none">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card shadow">
+                                    <div class="card-header border-0 pt-4">
+                                        <h4>
+                                            <i class="fa-regular fa-address-card"></i> ประวัติ
+                                        </h4>
+                                        <div class="row" style="display:flex;justify-content:flex-end;margin-right:1em;">
+                                            <input type="hidden" id="div_id" value="">
+
+                                            <div class="form-group">
+                                                <label for="">วันที่/เวลาเริ่มต้น:</label>
+                                                <input class="form-control form-control-sm" type="text" id='date_start'>
+                                            </div>
+                                            <div class="form-group ml-1">
+                                                <label for="">วันที่/เวลาสิ้นสุด:</label>
+                                                <input class="form-control form-control-sm" type="text" id='date_end'>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-left:1em;">
+                                            <div class="form-group">
+                                                <span>Username : </span><span id="res_user">...</span><br>
+                                                <span>วันที่ : </span><span id="res_start">...</span><span> -
+                                                </span><span id="res_end">...</span><br>
+                                                <span>ฝากเงินทั้งหมด : </span><span id="res_deposit" style="color:green">0 บาท</span><br>
+                                                <span>ถอนเงินทั้งหมด : </span><span id="res_withdraw" style="color:red">0 บาท</span><br>
+                                                <span>กำไร / ขาดทุน : </span><span id="res_total" style="color:red">0
+                                                    บาท</span><br>
+                                                <span>สรุปผล : </span><span id="res_rev" style="color:red">0 บาท</span><br><br>
+                                                <input type="hidden" id="res_amount" value="">
+
+                                                <button type="button" class="btn btn-info btn-sm" onclick="clear_credit()">
+                                                    <i class="far fa-edit"></i> ตัดยอด
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <table id="detail_alliance_logs" class="table table-hover" width="100%">
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="result_alliance" style="display:none">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card shadow">
+                                    <div class="card-header border-0 pt-4">
+                                        <h4>
+                                            <i class="fa-regular fa-address-card"></i> ประวัติตัดยอด
+                                        </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <table id="result_alliance_logs" class="table table-hover" width="100%">
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div w3-include-html="../includes/footer.html"></div>
+    </div>
+
+    <!-- #################################### ADD MEMBER #################################### -->
+    <div class="modal fade" id="add_alliance" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title"><i class="fa fa-user-plus"></i> เพิ่มพันธมิตร</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <input type="hidden" id="id_member" value="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">รหัสพันธมิตร</label>
+                        <input type="text" class="form-control" id="alliance_code" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ชื่อ - สกุล</label>
+                        <input type="text" class="form-control" id="alliance_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">เบอร์โทร</label>
+                        <input type="text" class="form-control" id="alliance_username">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">จำนวนถือหุ้น %</label>
+                        <input type="text" class="form-control" id="alliance_percent">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">เลขบัญชี</label>
+                        <input type="text" class="form-control" id="alliance_accnum">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ธนาคาร</label>
+                        <select id="alliance_bankname" class="form-control">
+                            <option value="">เลือกธนาคาร</option>
+                            <option value="bbl">กรุงเทพ</option>
+                            <option value="scb">ไทยพาณิชย์</option>
+                            <option value="kbank">กสิกร</option>
+                            <option value="bay">กรุงศรีอยุธยา</option>
+                            <option value="ktb">กรุงไทย</option>
+                            <option value="ktb">กรุงไทย</option>
+                            <option value="tmb">ทหารไทย</option>
+                            <option value="tbank">ธนชาติ</option>
+                            <option value="gsb">ออมสิน</option>
+                            <option value="baac">เพื่อการเกษตรและสหกรณ์การเกษตร</option>
+                            <option value="uob">ยูโอบี</option>
+                            <option value="tisco">ทิสโก้</option>
+                            <option value="cimb">ซีไอเอ็มบีไทย</option>
+                            <option value="lhb">แลนด์แอนด์เฮ้าส์</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" onclick="add_alliance()">เพิ่ม</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #################################### ADD MEMBER #################################### -->
+
+    <!-- #################################### EDIT MEMBER #################################### -->
+    <div class="modal fade" id="edit_alliance" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title"><i class="fa fa-user-plus"></i> เพิ่มพันธมิตร</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <input type="hidden" id="edit_id_member" value="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">รหัสพันธมิตร</label>
+                        <input type="text" class="form-control" id="edit_alliance_code" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ชื่อ - สกุล</label>
+                        <input type="text" class="form-control" id="edit_alliance_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">เบอร์โทร</label>
+                        <input type="text" class="form-control" id="edit_alliance_username">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">จำนวนถือหุ้น %</label>
+                        <input type="text" class="form-control" id="edit_alliance_percent">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">เลขบัญชี</label>
+                        <input type="text" class="form-control" id="edit_alliance_accnum">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ธนาคาร</label>
+                        <select id="edit_alliance_bankname" class="form-control">
+                            <option value="">เลือกธนาคาร</option>
+                            <option value="bbl">กรุงเทพ</option>
+                            <option value="scb">ไทยพาณิชย์</option>
+                            <option value="kbank">กสิกร</option>
+                            <option value="bay">กรุงศรีอยุธยา</option>
+                            <option value="ktb">กรุงไทย</option>
+                            <option value="ktb">กรุงไทย</option>
+                            <option value="tmb">ทหารไทย</option>
+                            <option value="tbank">ธนชาติ</option>
+                            <option value="gsb">ออมสิน</option>
+                            <option value="baac">เพื่อการเกษตรและสหกรณ์การเกษตร</option>
+                            <option value="uob">ยูโอบี</option>
+                            <option value="tisco">ทิสโก้</option>
+                            <option value="cimb">ซีไอเอ็มบีไทย</option>
+                            <option value="lhb">แลนด์แอนด์เฮ้าส์</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" onclick="edit_alliance_modal()">แก้ไข</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #################################### EDIT MEMBER #################################### -->
+
+
+
+
+
+    <!-- scripts -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../../assets/js/adminlte.min.js"></script>
+    <script src="../../assets/DateTimePicker/datetimepicker-master.js"></script>
+
+    <!-- datatables -->
+    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../../assets/constants/includepage.js"></script>
+    <script src="../../assets/js/toastr.min.js"></script>
+    <script src="../../constants/apiPort.js"></script>
+    <script src="../../constants/statusTextRespone.js"></script>
+    <script src="../../constants/validateValue.js"></script>
+    <script src="../../constants/util.js"></script>
+    <script src="../../includes/navtest.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

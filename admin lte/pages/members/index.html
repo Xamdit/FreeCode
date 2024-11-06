@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../authen.js"></script>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>จัดการสมาชิก | AppzStory</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link rel="stylesheet" href="../../assets/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- Datatables -->
+    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/toastr.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="loader"></div>
+    <div class="wrapper">
+        <div w3-include-html="../includes/sidebar.html"></div>
+        <div class="content-wrapper pt-3">
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12" style="text-align:center;padding: 20px;">
+                            <h1>ระบบจัดการสมาชิก</h1>
+                        </div>
+                        <div class="col-12">
+                            <div class="card shadow">
+                                <div class="card-header border-0 pt-4">
+                                    <h4>
+                                        <i class="fas fa-users"></i> จัดการสมาชิก
+                                    </h4>
+                                    <a href="#" onclick="add_member()" class="btn btn-primary mt-3">
+                                        <i class="fas fa-plus"></i> เพิ่มยูสเซอร์
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <table id="logs" class="table table-hover" width="100%">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="card shadow">
+                                <div class="card-header border-0 pt-4">
+                                    <h4>
+                                        <i class="fas fa-users"></i> จัดการสมาชิก UFABET
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <table id="logs_ufa" class="table table-hover" width="100%">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div w3-include-html="../includes/footer.html"></div>
+    </div>
+
+
+    <!-- #################################### ADD MEMBER #################################### -->
+    <div class="modal fade" id="add_member" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">แก้ไขข้อมูลสมาชิก</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <input type="hidden" id="id_member" value="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ชื่อผู้ใช้งาน</label>
+                        <input type="text" class="form-control" id="add_username">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">รหัสผ่าน</label>
+                        <input type="text" class="form-control" id="add_password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ชื่อบัญชี</label>
+                        <input type="text" class="form-control" id="add_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">เลขบัญชี</label>
+                        <input type="text" class="form-control" id="add_accnum">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ธนาคาร</label>
+                        <select id="add_bank" class="form-control">
+                            <option value="">เลือกธนาคาร</option>
+                            <option value="bbl">กรุงเทพ</option>
+                            <option value="scb">ไทยพาณิชย์</option>
+                            <option value="kbank">กสิกร</option>
+                            <option value="bay">กรุงศรีอยุธยา</option>
+                            <option value="ktb" >กรุงไทย</option>
+                            <option value="ktb">กรุงไทย</option>
+                            <option value="tmb">ทหารไทย</option>
+                            <option value="tbank">ธนชาติ</option>
+                            <option value="gsb">ออมสิน</option>
+                            <option value="baac">เพื่อการเกษตรและสหกรณ์การเกษตร</option>
+                            <option value="uob">ยูโอบี</option>
+                            <option value="tisco">ทิสโก้</option>
+                            <option value="cimb">ซีไอเอ็มบีไทย</option>
+                            <option value="lhb">แลนด์แอนด์เฮ้าส์</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Line</label>
+                        <input type="text" class="form-control" id="add_line">
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="addMember_modal()">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #################################### ADD MEMBER #################################### -->
+
+    <!-- #################################### EDIT MEMBER #################################### -->
+    <div class="modal fade" id="edit_member" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">แก้ไขข้อมูลสมาชิก</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <input type="hidden" id="id_member" value="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ชื่อผู้ใช้งาน</label>
+                        <input type="text" class="form-control" id="username" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">รหัสผ่าน</label>
+                        <input type="text" class="form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ชื่อบัญชี</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">เลขบัญชี</label>
+                        <input type="text" class="form-control" id="accnum">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ธนาคาร</label>
+                        <select id="bank" class="form-control">
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="editMember_modal()">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #################################### EDIT MEMBER #################################### -->
+
+    <!-- #################################### EDIT POWYINGSHUP #################################### -->
+    <div class="modal fade" id="edit_powyingshup" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">เพิ่มการเล่นเป่ายิ้งฉุบ</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <input type="hidden" id="id_member_powyingshup" value="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ชื่อผู้ใช้งาน : </label> &nbsp;<span id="powyingshup_id" style="color:green;">Waiting...</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">จำนวนเล่นคงเหลือ : </label> &nbsp;<span id="powyingshup_play" style="color:rgb(51, 181, 214);">0</span> &nbsp;<span style="color:rgb(51, 181, 214);">ครั้ง</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="amount_play" placeholder="ใส่จำนวนที่ต้องการ">
+                    </div>
+
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info" onclick="edit_powyingshup()">เพิ่มการเล่น</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #################################### EDIT POWYINGSHUP #################################### -->
+
+    <!-- #################################### MANAGE CREDIT #################################### -->
+    <div class="modal fade" id="manage_credit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">ระบบจัดการเครดิต</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <input type="hidden" id="id_member_powyingshup" value="">
+                <div class="modal-body">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="exampleInputEmail1" style="color:green;">Username : </label> &nbsp;
+                        <span id="username_credit" style="color:green;">Waiting...</span>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="exampleInputEmail1" style="color:blue;">Username UFA : </label> &nbsp;
+                        <span id="uernameufa_credit" style="color:blue;">Waiting...</span>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="exampleInputEmail1" style="color:rgb(209, 8, 192);">Turnover Today : </label> &nbsp;
+                        <span id="turnover_credit" style="color:rgb(209, 8, 192);">Waiting...</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="amount_credit" onchange="checkNumCredit()" placeholder="ใส่จำนวนที่ต้องการ">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" onclick="add_credit()">เพิ่มเครดิต</button>
+                    <button type="button" class="btn btn-danger" onclick="minus_credit()">ถอนเครดิต</button>
+                </div>
+                <div class="card-body">
+                    <table id="turnover_ufa" class="table table-hover" width="100%">
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- #################################### MANAGE CREDIT #################################### -->
+
+
+
+
+
+    <!-- scripts -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../../assets/js/adminlte.min.js"></script>
+
+    <!-- datatables -->
+    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../../assets/constants/includepage.js"></script>
+    <script src="../../assets/js/toastr.min.js"></script>
+    <script src="../../constants/apiPort.js"></script>
+    <script src="../../constants/statusTextRespone.js"></script>
+    <script src="../../constants/validateValue.js"></script>
+    <script src="../../constants/util.js"></script>
+    <script src="../../includes/navtest.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

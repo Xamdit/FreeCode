@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../authen.js"></script>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>จัดการสมาชิก | AppzStory</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link rel="stylesheet" href="../../assets/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- Datatables -->
+    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/toastr.min.css">
+    <link href="../../assets/DateTimePicker/datetimepicker-master.css" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="loader"></div>
+    <div class="wrapper">
+        <div w3-include-html="../includes/sidebar.html"></div>
+        <div class="content-wrapper pt-3">
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card shadow">
+                                <div class="card-header border-0 pt-4">
+                                    <h4>
+                                        <i class="fas fa-users"></i> รายงานยอดเทิร์น
+                                    </h4>
+                                    <div class="row" style="display:flex;justify-content:flex-end;margin-right:1em;">
+                                        <div class="form-group">
+                                            <label for="">Username:</label>
+                                            <input class="form-control form-control-sm" type="text" id='username'>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">วันที่/เวลาเริ่มต้น:</label>
+                                            <input class="form-control form-control-sm" type="text" id='date_start'>
+                                        </div>
+                                        <div class="form-group ml-1">
+                                            <label for="">วันที่/เวลาสิ้นสุด:</label>
+                                            <input class="form-control form-control-sm" type="text" id='date_end'>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="display:flex;justify-content:flex-end;margin-right:1em;">
+                                        <div class="form-group ml-1">
+                                            <label for=""> </label>
+                                            <button class="btn btn-success" onclick="searchData()">ค้นหา</button>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-left:1em;">
+                                        <div class="form-group">
+                                            <span>วันที่ : </span><span id="res_start">...</span><span> ถึงวันที่ </span><span id="res_end">...</span><br>
+                                            <span>ยอดดเทิร์น : </span><span id="res_turnover" style="color:green">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <table id="tb_deposit" class="table table-hover" width="100%">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div w3-include-html="../includes/footer.html"></div>
+    </div>
+
+
+
+
+
+    <!-- scripts -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../../assets/js/adminlte.min.js"></script>
+    <script src="../../assets/DateTimePicker/datetimepicker-master.js"></script>
+
+    <!-- datatables -->
+    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../../assets/constants/includepage.js"></script>
+    <script src="../../assets/js/toastr.min.js"></script>
+    <script src="../../constants/apiPort.js"></script>
+    <script src="../../constants/statusTextRespone.js"></script>
+    <script src="../../constants/validateValue.js"></script>
+    <script src="../../constants/util.js"></script>
+    <script src="../../includes/navtest.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

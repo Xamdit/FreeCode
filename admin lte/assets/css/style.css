@@ -1,0 +1,103 @@
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('../../assets/images/preload.gif') 50% 50% no-repeat rgb(222 222 222);
+    opacity: .8;
+}
+
+body,
+html {
+    height: 100%;
+    font-family: 'Kanit', cursive !important;
+    font-size: 0.95rem !important;
+}
+
+.bg {
+    background: #56baed;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    clip-path: polygon(0 0, 55% 0, 45% 100%, 0% 100%);
+}
+
+.w-60p {
+    width: 60px !important;
+}
+
+.w-90p {
+    width: 90px !important;
+}
+
+.w-150p {
+    width: 150px !important;
+}
+
+.canvas {
+    height: 300px!important;
+}
+
+.toggle.ios,
+.toggle-on.ios,
+.toggle-off.ios {
+    border-radius: 20px;
+    font-weight: 100px;
+}
+
+.toggle.ios .toggle-handle {
+    border-radius: 20px;
+}
+
+.toggle-on.btn {
+    padding-right: 19px;
+    font-weight: 100 !important;
+}
+
+.btn {
+    font-size: inherit !important;
+}
+
+.card,
+.small-box,
+.small-box-footer {
+    border-radius: 15px !important;
+}
+
+.small-box h1 {
+    font-size: 2rem !important;
+}
+
+.rtl {
+    direction: rtl !important;
+}
+
+@media (max-width: 1400px) {
+    .table-responsive-xxl {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .table-responsive-xxl>.table-bordered {
+        border: 0;
+    }
+    #orders .detail {
+        width: 300px !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .small-box h1 {
+        font-size: 1.7rem !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .small-box h1 {
+        font-size: 1.4rem !important;
+    }
+}

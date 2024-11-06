@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Backend .::. By Bevennes</title>
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--STYLESHEET-->
+    <!--=================================================-->
+
+    <!--Open Sans Font [ OPTIONAL ]-->
+    <!-- <link href='../source/css/font.css' rel='stylesheet' type='text/css'> -->
+
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="../source/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="../source/css/nifty.min.css" rel="stylesheet">
+
+
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="../source/css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+
+
+    <!--=================================================-->
+
+
+
+    <!--Pace - Page Load Progress Par [OPTIONAL]-->
+    <link href="../source/plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="../source/plugins/pace/pace.min.js"></script>
+
+
+
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href="../source/css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+
+
+
+
+    <!--=================================================
+
+    REQUIRED
+    You must include this in your project.
+
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+
+    DEMONSTRATION
+    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+
+    SAMPLE
+    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+
+    Detailed information and more samples can be found in the document.
+
+    =================================================-->
+
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+
+<body>
+    <div id="container" class="cls-container" style="background-color: rgb(17, 17, 17) !important;">
+
+        <!-- BACKGROUND IMAGE -->
+        <!--===================================================-->
+        <div id="bg-overlay" class="bg-img">
+            <div style="height:100% !important;background-color: rgb(2, 2, 2);"></div>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <!--===================================================-->
+        <div class="cls-content">
+            <div class="cls-content-sm panel">
+                <div class="panel-body" style="background-color: rgb(253, 253, 253);">
+                    <div class="mar-ver pad-btm">
+                        <h1 class="h3" style="color:rgb(2, 175, 132)">BACKEND CV9BET</h1>
+                    </div>
+                    <form method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Username" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" placeholder="Secert Code" id="secert" name="secert" required>
+                        </div>
+                    </form>
+                    <button class="btn btn-success btn-sm btn-block" style="background-color:rgb(2, 175, 132)" type="submit" id="login">Login</button>
+                </div>
+            </div>
+        </div>
+        <!--===================================================-->
+        <!--===================================================-->
+        <!-- END OF CONTAINER -->
+
+
+
+        <!--JAVASCRIPT-->
+        <!--=================================================-->
+
+        <!--jQuery [ REQUIRED ]-->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../source/js/jquery.min.js"></script>
+
+        <!--BootstrapJS [ RECOMMENDED ]-->
+        <script src="../source/js/bootstrap.min.js"></script>
+        <!--DataTables [ OPTIONAL ]-->
+        <script src="../source/plugins/datatables/media/js/jquery.dataTables.js"></script>
+        <script src="../source/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+        <script src="../source/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+        <!--Bootstrap Validator [ OPTIONAL ]-->
+        <script src="../source/plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+        <!-- Custom JS -->
+        <!-- <script src="../source/js/web_custom.js"></script> -->
+        <!-- <script src="./js/module_custom.js"></script> -->
+        <script src="../constants/apiPort.js"></script>
+        <script src="../constants/statusTextRespone.js"></script>
+        <script src="../constants/validateValue.js"></script>
+        <script src="../constants/util.js"></script>
+        <script src="../constants/includepage.js"></script>
+        <script src="./js/login.js"></script>
+        <!--=================================================-->
+        </script>
+</body>
+
+</html>

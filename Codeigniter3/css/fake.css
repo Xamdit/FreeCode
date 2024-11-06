@@ -1,0 +1,91 @@
+.x-index-top-container .-top-row-wrapper .-right-container .-btn {
+    position: relative;
+    display: inline-block;
+    width: 270px;
+    margin-top: 1rem;
+}
+
+.-register-btn {
+    width: 330px;
+    transition: -webkit-filter .2s;
+    transition: filter .2s;
+    transition: filter .2s, -webkit-filter .2s;
+}
+
+.-text {
+    position: absolute;
+    top: 50%;
+    left: 85px;
+    z-index: 2;
+    font-size: 1.60rem;
+    font-weight: 500;
+    color: #000;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, .4);
+    -webkit-transform: translate(25%, -50%);
+    transform: translate(25%, -50%);
+}
+
+.-text {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    color: #fff;
+    background: #000 -webkit-gradient(linear, 100% 0, 0 0, from(#000), color-stop(.5, #f5d174), to(#000));
+    background-position: -200px top;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation-name: x-shimmer;
+    animation-name: x-shimmer;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.-bg-img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+}
+
+.-fake-bg {
+    position: absolute;
+    z-index: 1;
+    width: 98%;
+    height: 80%;
+    border-radius: 50px;
+    -webkit-animation: x-neon-register-and-play 1.5s infinite alternate;
+    animation: x-neon-register-and-play 1.5s infinite alternate;
+}
+
+.-fake-bg {
+    top: 50%;
+    left: 50%;
+    width: 78%;
+    height: 70%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.x-modal .modal-dialog {
+    background: linear-gradient( 10deg, #ffdb84, #8f5d0b 10%, #976510 20%, #cb9b2e 35%, #96660d 45%, #825200 50%, #865703 55%, #94650d 70%, #b38432 85%, #ffdb84);
+    border-radius: 12px;
+    padding: 2px;
+    background-image: linear-gradient( 180deg, #763e1b 20%, #532b17 55%, #301307), linear-gradient( 10deg, #ffdb84, #8f5d0b 10%, #976510 20%, #cb9b2e 35%, #96660d 45%, #825200 50%, #865703 55%, #94650d 70%, #b38432 85%, #ffdb84);
+    border: 2px solid transparent;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+@media (max-width: 991.98px) {
+    .-fake-bg {
+        width: 76%;
+    }
+    .-text {
+        top: 53%;
+    }
+}

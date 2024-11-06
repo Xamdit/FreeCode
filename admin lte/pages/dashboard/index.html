@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../authen.js"></script>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>หน้าหลัก | AppzStory</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/loading.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="loader"></div>
+    <div class="wrapper">
+        <div w3-include-html="../includes/sidebar.html"></div>
+        <div class="content-wrapper pt-3">
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12" style="text-align:center;padding: 20px;">
+                            <h1>ตั้งค่าระบบ</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box bg-info shadow">
+                                <div class="inner text-center">
+                                    <h1 class="py-3">&nbsp;เครดิตยูฟ่า&nbsp;</h1>
+                                    <i class="fa-solid fa-dollar-sign" style="font-size: 2rem;"></i>
+                                </div>
+                                <a href="#" class="small-box-footer py-3"></i>
+                                    <h4 id="dashboard_credit_ufa">0</h4>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box bg-primary shadow">
+                                <div class="inner text-center">
+                                    <h1 class="py-3">สมาชิกยูฟ่า</h1>
+                                    <i class="fa-solid fa-user" style="font-size: 2rem;"></i>
+                                </div>
+                                <a href="#" class="small-box-footer py-3"></i>
+                                    <h4 id="dashboard_member_ufa">0</h4>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box bg-success shadow">
+                                <div class="inner text-center">
+                                    <h1 class="py-3">ยอดรวมฝากทั้งหมด</h1>
+                                    <i class="fa-solid fa-money-bill-transfer" style="font-size: 2rem;"></i>
+                                </div>
+                                <a href="#" class="small-box-footer py-3"></i>
+                                    <h4 id="dashboard_deposit_all">0</h4>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box bg-danger shadow">
+                                <div class="inner text-center">
+                                    <h1 class="py-3">ยอดรวมถอนทั้งหมด</h1>
+                                    <i class="fa-solid fa-money-bill-transfer" style="font-size: 2rem;"></i>
+                                </div>
+                                <a href="#" class="small-box-footer py-3"></i>
+                                    <h4 id="dashboard_withdraw_all">0</h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card card-light">
+                                <div class="card-header">
+                                    <h3 class="card-title">General Setting</h3>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">ไอดีไลน์</label>
+                                        <input type="text" class="form-control" id="line_id">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">ชื่อเว็บ</label>
+                                        <input type="text" class="form-control" id="name_web">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">เติมขั้นต่ำ</label>
+                                        <input type="text" class="form-control" id="d_limit">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">ถอนขั้นต่ำ</label>
+                                        <input type="text" class="form-control" id="w_limit">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">เติมแนะนำเพื่อนครั้งแรกขั้นต่ำ</label>
+                                        <input type="text" class="form-control" id="aff_d">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">จำนวนเปอร์เซ็นที่ได้รับจากการแนะนำ (ใส่ 0.1
+                                            = 10% ,1.0 = 100%)</label>
+                                        <input type="text" class="form-control" id="aff_m">
+                                    </div>
+                                    <div class="card-footer" style="padding:0px;">
+                                        <button id="edit_general_setting" class="btn btn-primary" style="width: 100%;">บันทึก</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card card-light">
+                                <div class="card-header">
+                                    <h3 class="card-title">ตั้งค่าระบบถอนออโต้</h3>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">เครดิตต่ำสุดที่ถอนได้</label>
+                                        <input type="text" class="form-control" id="credit_min">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">เครดิตสูงสุดที่ถอนได้</label>
+                                        <input type="text" class="form-control" id="credit_max">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">เครดิตลิมิต / วัน</label>
+                                        <input type="text" class="form-control" id="credit_limit">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">สถานะ</label><br>
+                                        <input type="radio" name="status" id="status_1" value="1" checked>
+                                        <label for="male">เปิดใช้งาน</label><br>
+                                        <input type="radio" name="status" value="0" id="status_0">
+                                        <label for="male">ปิดใช้งาน</label><br>
+                                    </div>
+                                    <div class="card-footer" style="padding:0px;">
+                                        <button id="edit_auto_setting" class="btn btn-primary" style="width: 100%;">บันทึก</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card card-light" id="ufaform">
+
+                            </div>
+                            <div class="card card-light">
+                                <div class="card-header">
+                                    <h3 class="card-title">Notify Line Token</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Token (แจ้งเตือนสมัครสมาชิก)</label>
+                                        <input type="text" class="form-control" id="token_line">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Token (แจ้งเตือนเข้าเล่นเกม)</label>
+                                        <input type="text" class="form-control" id="token_line_game">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Token (แจ้งเตือนการฝากเงิน)</label>
+                                        <input type="text" class="form-control" id="token_line_depo">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Token (แจ้งเตือนการถอนเงิน)</label>
+                                        <input type="text" class="form-control" id="token_line_with">
+                                    </div>
+                                    <div class="card-footer" style="padding:0px;">
+                                        <button id="edit_notify_setting" class="btn btn-primary" style="width: 100%;">บันทึก</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card card-light">
+                                <div class="card-header">
+                                    <h3 class="card-title">สรุปยอดฝากถอน</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p class="muted mb-3">ผลรายงานสรุปยอดฝากและถอน</p>
+                                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show" style="color: #155724;background-color: #d4edda;border-color: #c3e6cb;">
+                                        <span class="badge badge-pill badge-success">รายงานการฝาก</span> ยอดรายการฝาก : <span id="deposit_summary"> 0 บาท </span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="13" aria-valuemin="0" aria-valuemax="100" id="progress_deposit">0%</div>
+                                    </div>
+                                    <br>
+                                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show" style="color: #721c24;background-color: #f8d7da;border-color: #f5c6cb;">
+                                        <span class="badge badge-pill badge-danger">รายงานการถอน</span> ยอดรายการถอน : <span id="withdraw_summary"> 0 บาท </span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" id="progress_withdraw">0%</div>
+                                    </div>
+                                    <br>
+                                    <div class="sufee-alert alert with-close alert-dark alert-dismissible fade show" style="color: #1b1e21;background-color: #d6d8d9;border-color: #c6c8ca;">
+                                        <span class="badge badge-pill badge-dark">สรุปผลกำไร</span> ยอดผลกำไร : <span id="total_summary"> 0 บาท </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card card-light" id="adminscb">
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div w3-include-html="../includes/footer.html"></div>
+    </div>
+
+    <!-- Loading Zone -->
+    <!-- <div class="modal fade bd-example-modal-lg" id="modaLoading" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    style="background-color: rgba(0,0,0,0.95);">
+    <div class="modal-dialog modal-sm" style="position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);">
+        <div class="modal-content" style="width: 48px">
+            <span class="fa fa-spinner fa-spin fa-3x"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready( async function () {
+         $('#modaLoading').modal('show');
+    });
+</script> -->
+    <!-- End Modal Zone -->
+
+    <!-- SCRIPTS -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/adminlte.min.js"></script>
+
+    <!-- OPTIONAL SCRIPTS -->
+    <!-- <script src="../../plugins/chart.js/Chart.min.js"></script> -->
+    <!-- <script src="../../plugins/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js"></script> -->
+    <!-- <script src="../../assets/js/pages/dashboard.js"></script> -->
+    <script src="../../assets/constants/includepage.js"></script>
+    <script src="../../constants/apiPort.js"></script>
+    <script src="../../constants/statusTextRespone.js"></script>
+    <script src="../../constants/validateValue.js"></script>
+    <script src="../../constants/util.js"></script>
+    <script src="../../includes/navtest.js"></script>
+    <script src="js/index.js"></script>
+
+
+</body>
+
+</html>

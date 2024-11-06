@@ -1,0 +1,54 @@
+<?php include "include/connect.php" ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+
+
+    <link rel="stylesheet" href="datetimepicker-master.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="datetimepicker-master.js"></script>
+</head>
+<body>
+<h1>Hello, world!</h1>
+
+<input type="text" name="datepicker" id="datetimepicker1">
+<script>
+
+
+    var yearL = new Date().getFullYear() - 543;
+    var leap = (((yearL % 4 == 0) && (yearL % 100 != 0)) || (yearL % 400 == 0)) ? 2 : 3;
+    var date = new Date();
+    var day = date.getDate();
+    var month = str_pad(date.getMonth('m') + 1);
+    var year = date.getFullYear() + 543;
+    var hours = date.getHours();
+    var minutes = date.getMinutes();    
+    
+    var options = {
+        value: day + '/' + month + '/' + year + " " + hours + ":" + minutes,
+        timepicker: false,
+        format:'d/m/Y H:i',
+        lang: 'th',
+        dayOfWeekStart: leap,
+        yearOffset: 543,
+        timepicker:true,
+        //Optional
+        minDate : year + "/" + month + "/" + (day-2)
+    }
+
+    $.datetimepicker.setLocale('th');
+    $('#datetimepicker1').datetimepicker(options);
+
+
+    function str_pad(n) {
+        return String("00" + n).slice(-2);
+    }
+</script>
+
+</body>
+</html>

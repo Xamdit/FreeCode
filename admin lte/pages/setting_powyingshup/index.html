@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../authen.js"></script>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" content="width=device-width, initial-scale=1">
+    <title>หน้าหลัก | AppzStory</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/loading.css">
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="loader"></div>
+    <div class="wrapper">
+        <div w3-include-html="../includes/sidebar.html"></div>
+        <div class="content-wrapper pt-3">
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12" style="text-align:center;padding: 20px;">
+                            <h1>ระบบตั้งค่าเป่ายิ้งฉุบ</h1>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">ตั้งค่าระบบเป่ายิ้งฉุบ</div>
+                                <div class="card-body">
+                                    <input type="hidden" id="id_1" value="1">
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1 active">เครดิตต่ำสุด</label>
+                                        <input type="text" class="form-control cc-name " value="" id="credit_low" required="">
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1 active">เครดิตสูงสุด</label>
+                                        <input type="text" class="form-control cc-name " value="" id="credit_high" required="">
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1 active">เครดิตโบนัสแตก</label>
+                                        <input type="text" class="form-control cc-name " value="" id="credit_prize" required="">
+                                    </div>
+
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1 active">จำนวนครั้งให้โบนัสแตก</label>
+                                        <input type="text" class="form-control cc-name " value="" id="round" required="">
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1 active">จำนวนเงินต่ำสุดที่ฝาก</label>
+                                        <input type="text" class="form-control cc-name " value="" id="deposit" required="">
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1 active">จำนวนครั้งที่เล่น /
+                                            การกดรับ</label>
+                                        <input type="text" class="form-control cc-name " value="" id="play" required="">
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1 active">จำนวนวันที่สามารถกดรับได้</label>
+                                        <input type="text" class="form-control cc-name " value="" id="day" required="">
+                                    </div>
+                                    <br>
+                                    <input type="radio" name="status" id="status_1" value="1" checked="">
+                                    <label for="male">เปิดใช้งาน</label><br>
+                                    <input type="radio" name="status" id="status_0" value="0">
+                                    <label for="male">ปิดใช้งาน</label><br>
+                                    <span class="waves-input-wrapper waves-effect waves-light">
+                                        <button type="submit" class="btn btn-lg btn-info btn-block"  onclick="save_setting()">บันทึก</button>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div w3-include-html="../includes/footer.html"></div>
+    </div>
+
+    <!-- Loading Zone -->
+    <!-- <div class="modal fade bd-example-modal-lg" id="modaLoading" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    style="background-color: rgba(0,0,0,0.95);">
+    <div class="modal-dialog modal-sm" style="position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);">
+        <div class="modal-content" style="width: 48px">
+            <span class="fa fa-spinner fa-spin fa-3x"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready( async function () {
+         $('#modaLoading').modal('show');
+    });
+</script> -->
+    <!-- End Modal Zone -->
+
+    <!-- SCRIPTS -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/adminlte.min.js"></script>
+
+    <!-- OPTIONAL SCRIPTS -->
+    <!-- <script src="../../plugins/chart.js/Chart.min.js"></script> -->
+    <!-- <script src="../../plugins/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js"></script> -->
+    <!-- <script src="../../assets/js/pages/dashboard.js"></script> -->
+    <script src="../../assets/constants/includepage.js"></script>
+    <script src="../../constants/apiPort.js"></script>
+    <script src="../../constants/statusTextRespone.js"></script>
+    <script src="../../constants/validateValue.js"></script>
+    <script src="../../constants/util.js"></script>
+    <script src="../../includes/navtest.js"></script>
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>

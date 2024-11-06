@@ -1,0 +1,7 @@
+.xdsoft_datetimepicker {
+    background: rgba(219,79,79,0.8);
+    border-radius: 2px;
+}
+.xdsoft_datetimepicker .xdsoft_label {
+	background-color: rgba(219,79,79,0.1);
+}

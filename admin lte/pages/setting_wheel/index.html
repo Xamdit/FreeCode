@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../authen.js"></script>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" content="width=device-width, initial-scale=1">
+    <title>จัดการสมาชิก | AppzStory</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link rel="stylesheet" href="../../assets/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- Datatables -->
+    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/toastr.min.css">
+    <link rel="stylesheet" href="../../assets/css/superwheeladmin.css">
+    <!-- superWheel -->
+    <style>
+        #display_image {
+            width: 100%;
+            height: 169px;
+            /* border: 1px solid black; */
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="loader"></div>
+    <div class="wrapper">
+        <div w3-include-html="../includes/sidebar.html"></div>
+        <div class="content-wrapper pt-3">
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12" style="text-align:center;padding: 20px;">
+                            <h1>ระบบจัดการวงล้อ</h1>
+                        </div>
+                        <div class="col-12">
+                            <div class="card card-dark">
+                                <div class="card-header">
+                                    <h3 class="card-title"> ตั้งค่าวงล้อ</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive table-responsive-data2">
+                                        <div class="card" style="text-align:center">
+                                            <div class="wheel-horizontal wheel-500 superWheel _0" style="font-size: 16px; width: 500px !important; height: 500px !important;margin-top: 50px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-12">
+                            <div class="card card-dark">
+                                <div class="card-header">ตั้งค่าระบบวงล้อ</div>
+                                <div class="card-body">
+
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1">สีข้อความ</label>
+                                        <input type="text" class="form-control cc-name " value="" id='text_color' required>
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1">ขนาดตัวอักศร</label>
+                                        <input type="text" class="form-control cc-name " value="" id='text_size' required>
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1">ระยะตัวอักศร</label>
+                                        <input type="text" class="form-control cc-name " value="" id='offset_text' required>
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1">ชนิดข้อความ</label>
+                                        <select class="form-control cc-name" id="text_type">
+                                                <option value="h" selected>แนวนอน</option>
+                                                <option value="v">แนวตั้ง</option>
+
+                                            </select>
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1">สีของเส้นวงล้อ</label>
+                                        <input type="text" class="form-control cc-name " value="" id='line_color' required>
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1">สีข้างในวงล้อ</label>
+                                        <input type="text" class="form-control cc-name " value="" id='inner_color' required>
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1">สีข้างนอกวงล้อ</label>
+                                        <input type="text" class="form-control cc-name " value="" id='outer_color' required>
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1">สีจุดศูนย์กลางวงล้อ</label>
+                                        <input type="text" class="form-control cc-name " value="" id='center_color' required>
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1">รูปภาพกลางวงล้อ</label>
+                                        <input type="text" class="form-control cc-name " value="" id='center_img' required>
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="" class="control-label mb-1">ตั้งค่าเครดิตขั้นต่ำหมุนการวงล้อ</label>
+                                        <input type="number" class="form-control cc-name " value="" id='lowcredit' required>
+                                    </div>
+                                    <br>
+                                    <input type="radio" name="status" id="status_1" value="1" checked>
+                                    <label for="male">เปิดใช้งาน</label><br>
+                                    <input type="radio" name="status" id="status_0" value="0">
+                                    <label for="male">ปิดใช้งาน</label><br>
+
+                                    <button class="btn btn-lg btn-info btn-block" onclick="setting_w()">บันทึก</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card card-dark">
+                                <div class="card-header">ตั้งค่าวงล้อ</div>
+                                <div class="card-body" id="set_wheel">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div w3-include-html="../includes/footer.html"></div>
+
+
+
+        <!-- scripts -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../../plugins/jquery/jquery.min.js"></script>
+        <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+        <script src="../../assets/js/adminlte.min.js"></script>
+
+        <!-- datatables -->
+        <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+        <script src="../../assets/constants/includepage.js"></script>
+        <script src="../../assets/js/toastr.min.js"></script>
+        <script src="../../assets/js/superwheel.js"></script>
+        <script src="../../constants/apiPort.js"></script>
+        <script src="../../constants/statusTextRespone.js"></script>
+        <script src="../../constants/validateValue.js"></script>
+        <script src="../../constants/util.js"></script>
+        <script src="../../includes/navtest.js"></script>
+        <script src="js/index.js"></script>
+</body>
+
+</html>
